@@ -42,14 +42,13 @@ var scimIntegrationSchema = map[string]*schema.Schema{
 		DiffSuppressFunc: NormalizeAndCompare(sdk.ToScimSecurityIntegrationScimClientOption),
 	},
 	"run_as_role": {
-		Type:     schema.TypeString,
-		Required: true,
-		ForceNew: true,
-		Description: fmt.Sprintf("Specify the SCIM role in Snowflake that owns any users and roles that are imported from the identity provider into Snowflake using SCIM."+
-			" Provider assumes that the specified role is already provided. Valid options are: %v.", possibleValuesListed(sdk.AllScimSecurityIntegrationRunAsRoles)),
-		ValidateDiagFunc: sdkValidation(sdk.ToScimSecurityIntegrationRunAsRoleOption),
-		DiffSuppressFunc: NormalizeAndCompare(sdk.ToScimSecurityIntegrationRunAsRoleOption),
-	},
+    Type:        schema.TypeString,
+    Required:    true,
+    ForceNew:    true,
+    Description: fmt.Sprintf("Specify the SCIM role in Snowflake that owns any users and roles that are imported from the identity provider into Snowflake using SCIM."+
+        " Provider assumes that the specified role is already provided. Valid options are: %v.", possibleValuesListed(sdk.AllScimSecurityIntegrationRunAsRoles)),
+    DiffSuppressFunc: NormalizeAndCompare(sdk.ToScimSecurityIntegrationRunAsRoleOption),
+},
 	"network_policy": {
 		Type:             schema.TypeString,
 		ValidateDiagFunc: IsValidIdentifier[sdk.AccountObjectIdentifier](),
